@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXORA PRESENTS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&display=swap');
+        :root {
+            --primary: #00ff88;
+            --secondary: #03d1ff;
+            --background: #0a192f;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: var(--background);
+            color: white;
+            line-height: 1.6;
+            padding: 20px;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 60px; /* Add padding to accommodate the footer */
+        }
+
+        .header {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            background: var(--card-bg);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.2);
+        }
+
+        .class-group {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .class-category {
+            margin-bottom: 2rem;
+        }
+
+        .class-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .event-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .event-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            position: relative;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .rank-item::before {
+            content: '';
+            width: 8px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .gold { background: linear-gradient(90deg, rgba(255,215,0,0.1) 0%, transparent 100%); }
+        .silver { background: linear-gradient(90deg, rgba(192,192,192,0.1) 0%, transparent 100%); }
+        .bronze { background: linear-gradient(90deg, rgba(205,127,50,0.1) 0%, transparent 100%); }
+
+        .medal-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 1rem;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 1rem 0;
+            background: var(--card-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .navigation { gap: 0.5rem; }
+            .nav-btn { padding: 10px 20px; }
+            .class-group { padding: 1rem; }
+            .event-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>JES SPORTS MEET RESULTS 2024-25</h1>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-btn active-group" onclick="showGroup('nursery')">Early Years</button>
+            <button class="nav-btn" onclick="showGroup('primary')">Primary</button>
+            <button class="nav-btn" onclick="showGroup('senior')">Senior</button>
+        </div>
+
+        <div id="nursery-group" class="class-group">
+            <!-- Content generated by JS -->
+        </div>
+
+        <div id="primary-group" class="class-group" style="display: none;">
+            <!-- Content generated by JS -->
+        </div>
+
+        <div id="senior-group" class="class-group" style="display: none;">
+            <!-- Content generated by JS -->
+        </div>
+    </div>
+
+    <div class="footer">
+        Developed by Aftab Malik
+    </div>
+
+    <script>
+        const sportsData = {
+            nursery: {
+                'NURSERY': {
+                    'Musical Chair': ['','',''],
+                    'Lemon & Spoon': ['','',''],
+                    'Long Jump': ['','',''],
+                    'Collection Of Chocolate': ['','',''],
+                    'Three Legged Race': ['','',''],
+                    'Running Race': ['','',''],
+                    'Frog Jump': ['','',''],
+                    'Disc Throw': ['','',''],
+                    'Sack Race': ['','','']
+                },
+                'LKG': {
+                    'Musical Chair': ['','',''],
+                    'Lemon & Spoon': ['','',''],
+                    'Long Jump': ['','',''],
+                    'Collection Of Chocolate': ['','',''],
+                    'Three Legged Race': ['','',''],
+                    'Running Race': ['','',''],
+                    'Frog Jump': ['','',''],
+                    'Disc Throw': ['','',''],
+                    'Sack Race': ['','','']
+                },
+                'UKG': {
+                    'Musical Chair': ['','',''],
+                    'Lemon & Spoon': ['','',''],
+                    'Long Jump': ['','',''],
+                    'Collection Of Chocolate': ['','',''],
+                    'Three Legged Race': ['','','']
+                }
+            },
+            primary: {
+                'I & II': {
+                    'Running Race': ['','',''],
+                    'Three Legged Race': ['','',''],
+                    'Long Jump': ['','',''],
+                    'Lemon & Spoon': ['','',''],
+                    'Tug of War': ['','',''],
+                    'Frog Jump': ['','',''],
+                    'Sack Race': ['','',''],
+                    'Needle & Thread': ['','',''],
+                    'Disc Throw': ['','',''],
+                    'Musical Chair': ['','',''],
+                    'Hopping': ['','',''],
+                    'Kho-Kho': ['','','']
+                },
+                'III & IV': {
+                    'Tug of War': ['','',''],
+                    'Lemon & Spoon': ['','',''],
+                    'Sack Race': ['','',''],
+                    'Cricket': ['','',''],
+                    'Ludo': ['','',''],
+                    'Three Legged Race': ['','',''],
+                    'Kabaddi': ['','',''],
+                    'Needle & Thread': ['','',''],
+                    'Running Race': ['','',''],
+                    'Slow Cycling': ['','',''],
+                    'Long Jump': ['','',''],
+                    'Kho-Kho': ['','','']
+                },
+                'V': {
+                    'Tug of War': ['','',''],
+                    'Lemon & Spoon': ['','',''],
+                    'Sack Race': ['','',''],
+                    'Cricket': ['','',''],
+                    'Ludo': ['','',''],
+                    'Three Legged Race': ['','',''],
+                    'Kabaddi': ['','',''],
+                    'Needle & Thread': ['','','']
+                }
+            },
+            senior: {
+                'VI-IX': {
+                    'Running Race': ['','',''],
+                    'Kabaddi': ['','',''],
+                    'Kho-Kho': ['','',''],
+                    'Slow Cycling': ['','',''],
+                    'Tug of War': ['','',''],
+                    'Long Jump': ['','',''],
+                    'Shot Put': ['','',''],
+                    'Cricket': ['','',''],
+                    'High Jump': ['','',''],
+                    'Javelin Throw': ['','',''],
+                    'Foot Ball': ['','',''],
+                    'Volley Ball': ['','',''],
+                    'Dodge Ball': ['','',''],
+                    'Carrom': ['','',''],
+                    'Sack Race': ['','',''],
+                    'Hurdles': ['','',''],
+                    'Kick Ball': ['','',''],
+                    'Catch of War': ['','','']
+                }
+            }
+        };
+
+        function createClassCategory(groupId, classData) {
+            const groupDiv = document.getElementById(groupId);
+            groupDiv.innerHTML = '';
+            
+            for (const [className, events] of Object.entries(classData)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'class-category';
+                categoryDiv.innerHTML = `
+                    <h3>${className}</h3>
+                    <div class="event-list">
+                        ${Object.entries(events).map(([event, winners]) => `
+                            <div class="event-card">
+                                <h4>${event}</h4>
+                                <div class="rank-item gold">
+                                    <span class="medal-icon">🥇</span>
+                                    <div>
+                                        <div>1st Place</div>
+                                        <div>${winners[0]}</div>
+                                    </div>
+                                </div>
+                                <div class="rank-item silver">
+                                    <span class="medal-icon">🥈</span>
+                                    <div>
+                                        <div>2nd Place</div>
+                                        <div>${winners[1]}</div>
+                                    </div>
+                                </div>
+                                <div class="rank-item bronze">
+                                    <span class="medal-icon">🥉</span>
+                                    <div>
+                                        <div>3rd Place</div>
+                                        <div>${winners[2]}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                groupDiv.appendChild(categoryDiv);
+            }
+        }
+
+        function showGroup(groupName) {
+            document.querySelectorAll('.class-group').forEach(group => group.style.display = 'none');
+            document.getElementById(`${groupName}-group`).style.display = 'block';
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active-group'));
+            event.target.classList.add('active-group');
+        }
+
+        window.onload = () => {
+            createClassCategory('nursery-group', sportsData.nursery);
+            createClassCategory('primary-group', sportsData.primary);
+            createClassCategory('senior-group', sportsData.senior);
+        };
+    </script>
+</body>
+</html>
